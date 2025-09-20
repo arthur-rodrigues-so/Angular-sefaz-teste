@@ -1,3 +1,69 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { BackendsComponent } from './pages/backends/backends.component';
+import { ApisComponent } from './pages/apis/apis.component';
+import { GatewaysComponent } from './pages/gateways/gateways.component';
+import { TestesComponent } from './pages/testes/testes.component';
+import { TagsComponent } from './pages/tags/tags.component';
+import { DocumentacaoComponent } from './pages/documentacao/documentacao.component';
+import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.component';
+import { createAuthGuard } from 'keycloak-angular';
+import { NavComponent } from './components/template/nav/nav.component';
 
-export const routes: Routes = [];
+
+export const routes: Routes = [
+{
+    path: 'home',
+    component: HomeComponent,
+  },
+  
+  
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: NavComponent, 
+    canActivate: [createAuthGuard],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  {
+    path: 'backends',
+    component: BackendsComponent,
+  },
+  {
+    path: 'apis',
+    component: ApisComponent,
+  },
+  {
+    path: 'gateways',
+    component: GatewaysComponent,
+  },
+  {
+    path: 'testes',
+    component: TestesComponent,
+  },
+  {
+    path: 'tags',
+    component: TagsComponent,
+  },
+  {
+    path: 'documentação',
+    component: DocumentacaoComponent,
+  },
+  {
+    path: 'usuario',
+    component: UsuarioComponent,
+  },
+  {
+    path: 'configurações',
+    component: ConfiguracoesComponent,
+  },
+]

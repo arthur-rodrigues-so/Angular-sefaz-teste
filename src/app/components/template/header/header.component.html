@@ -1,0 +1,42 @@
+<mat-toolbar class="header">
+  <!-- <a routerLink="/">
+    <img src="https://pbs.twimg.com/profile_images/1666324142235299841/6klEKH_q_400x400.jpg"alt="Logo"/>
+    <div class="titulo">
+      <span class="center">API CENTER</span>
+      <span class="api">Gerenciador de APIs</span>
+    </div>
+  </a> -->
+
+  <div class="search-bar">
+    <form>
+      <input type="text" placeholder="Buscar por nome, descrição ou tags..." />
+      <button title="Buscar" type="submit" class="material-icons v-middle">search</button>
+    </form>
+  </div>
+  <div class="logout">
+    <button
+      title="Notificações"
+      type="button"
+      class="material-icons notif-button"
+      (click)="toggleNotifications()"
+    >
+      <mat-icon matBadge="5">notifications</mat-icon>
+    </button>
+
+    <div class="notifications-box" *ngIf="showNotifications">
+      <h4>Notificações</h4>
+      <ul>
+        <li *ngFor="let notif of notifications">
+          <a [routerLink]="notif.link">{{ notif.message }}</a>
+        </li>
+      </ul>
+      <p *ngIf="notifications.length === 0">Sem notificações</p>
+    </div>
+
+    <a routerLink="/usuario">
+      <button title="Usuário" type="button" class="material-icons">
+        person
+      </button>
+    </a>
+  </div>
+</mat-toolbar>

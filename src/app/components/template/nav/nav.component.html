@@ -1,0 +1,72 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav
+    class="sidenav"
+    mode="side"
+    opened
+    fixedInViewport="true"
+    fixedTopGap="0"
+  >
+    <mat-toolbar class="header">
+      <a routerLink="/">
+        <img
+          src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT9FlJEXx6z5PQz9VI0P-gj3P8snapFqOf_ZG3k0PbVLpvUvWhx"
+          alt="Logo"
+        />
+        <div class="titulo">
+          <span class="center">API CENTER</span>
+          <span class="api">Gerenciador de APIs</span>
+        </div>
+      </a>
+    </mat-toolbar>
+
+    <mat-nav-list class="nav-list1">
+      <a routerLink="/">
+        <h2>PRINCIPAL</h2>
+      </a>
+      <a mat-list-item routerLink="/dashboard">
+        <i class="material-icons v-middle">house</i>
+        <span>Dashboard</span>
+      </a>
+      <a mat-list-item routerLink="/backends">
+        <i class="material-icons v-middle">view_list</i>
+        <span>Backends</span>
+      </a>
+      <a mat-list-item routerLink="/apis">
+        <i class="material-icons v-middle">language</i>
+        <span>APIs</span>
+      </a>
+      <a mat-list-item routerLink="/gateways">
+        <i class="material-icons v-middle">analytics</i>
+        <span>Gateways</span>
+      </a>
+      <a mat-list-item routerLink="/testes">
+        <i class="material-icons v-middle">science</i>
+        <span>Testes</span>
+      </a>
+      <a mat-list-item routerLink="/tags">
+        <i class="material-icons v-middle">sell</i>
+        <span>Tags</span>
+      </a>
+      <a mat-list-item routerLink="/documentação">
+        <i class="material-icons v-middle">menu_book</i>
+        <span>Documentação</span>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list class="nav-list2">
+      <h2>GERENCIAMENTO</h2>
+
+      <a mat-list-item routerLink="/configurações"  (click)="login()">
+        <i class="material-icons v-middle">settings</i>
+        <span>Configurações</span>
+      </a>
+      <a mat-list-item routerLink="">
+        <i class="material-icons v-middle">logout</i>
+        <span>Sair</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
