@@ -24,16 +24,12 @@ services:
     command:
       - start
       - --optimized
-      - --https-certificate-file=/opt/keycloak/conf/certs/certfile.pem
-      - --https-certificate-key-file=/opt/keycloak/conf/certs/keyfile.pem
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
       KC_PROXY: edge
       KC_HOSTNAME_STRICT: false
       KC_HTTP_ENABLED: true
-    volumes:
-      - ./keycloak/conf:/opt/keycloak/conf/certs:ro
     depends_on:
       postgres:
         condition: service_healthy

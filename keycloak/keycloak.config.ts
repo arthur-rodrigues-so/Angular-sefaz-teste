@@ -9,7 +9,7 @@ const localhostCondition = createInterceptorCondition<IncludeBearerTokenConditio
 export const provideKeycloakAngular = () => 
   provideKeycloak({
     config: {
-      realm: 'master',
+      realm: 'Gerenciador-de-Api',
       url: 'http://localhost/auth/',
       clientId: 'myClient'
     },
