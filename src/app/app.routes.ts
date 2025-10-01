@@ -10,7 +10,6 @@ import { DocumentacaoComponent } from './pages/documentacao/documentacao.compone
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.component';
 import { createAuthGuard } from 'keycloak-angular';
-import { NavComponent } from './components/template/nav/nav.component';
 
 
 export const routes: Routes = [
@@ -18,16 +17,9 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
-  
-  
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
-    component: NavComponent, 
+    component: HomeComponent, 
     canActivate: [createAuthGuard],
   },
   {

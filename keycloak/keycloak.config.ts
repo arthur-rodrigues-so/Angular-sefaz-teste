@@ -1,4 +1,4 @@
-import { provideKeycloak, createInterceptorCondition, withAutoRefreshToken, AutoRefreshTokenService, UserActivityService, INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG, IncludeBearerTokenCondition } from 'keycloak-angular';
+import { provideKeycloak, createInterceptorCondition, withAutoRefreshToken, AutoRefreshTokenService, UserActivityService, INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG, IncludeBearerTokenCondition, KeycloakService } from 'keycloak-angular';
 
 //Todo esse arquivo é a aplicação do Keycloak no angular
 
@@ -15,7 +15,7 @@ export const provideKeycloakAngular = () =>
     },
     initOptions: {
       onLoad: 'login-required',
-      silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
+      silentCheckSsoRedirectUri: window.location.origin + 'src/app/assets/silent-check-sso.html',
       redirectUri: window.location.origin + '/home'
     },
     features: [
@@ -23,10 +23,12 @@ export const provideKeycloakAngular = () =>
         onInactivityTimeout: 'logout',
         sessionTimeout: 60000
       })
+      
     ],
     providers: [
       AutoRefreshTokenService,
       UserActivityService,
+      KeycloakService,
       {
         provide: INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
         useValue: [localhostCondition]

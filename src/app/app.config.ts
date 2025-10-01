@@ -1,12 +1,11 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideKeycloakAngular } from '../../keycloak/keycloak.config';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { includeBearerTokenInterceptor } from 'keycloak-angular';
-
-
+import { includeBearerTokenInterceptor, KeycloakService } from 'keycloak-angular';
+import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,11 +14,14 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
-      }),),
-    provideAnimations(),
-    provideKeycloakAngular(),
+      }),
+      withComponentInputBinding()
+    ),
+    provideClientHydration(),
+    provideAnimations(), 
+    provideKeycloakAngular(), 
     provideHttpClient(withInterceptors([includeBearerTokenInterceptor])),
     provideZoneChangeDetection({ eventCoalescing: true }),
-   
-  ]
+    KeycloakService,  
+  ],
 };

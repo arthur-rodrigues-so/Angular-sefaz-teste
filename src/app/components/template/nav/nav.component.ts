@@ -9,8 +9,7 @@ import { HostListener } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ViewChild } from '@angular/core';
-import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs, KeycloakService } from 'keycloak-angular'
-import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -37,28 +36,5 @@ export class NavComponent {
   onResize(event: any) {
     this.isLargeScreen = event.target.innerWidth >= 768;
   }
-  authenticated = false;
-  keycloakStatus: string | undefined;
-  private readonly keycloak = inject(KeycloakService);
-  private readonly keycloakSignal = inject(KEYCLOAK_EVENT_SIGNAL);
 
-  constructor(private router: Router) {
-    effect(() => {
-      const keycloakEvent = this.keycloakSignal();
-
-      this.keycloakStatus = keycloakEvent.type;
-
-      if (keycloakEvent.type === KeycloakEventType.Ready) {
-        this.authenticated = typeEventArgs<ReadyArgs>(keycloakEvent.args);
-      }
-
-      if (keycloakEvent.type === KeycloakEventType.AuthLogout) {
-        this.authenticated = false;
-      }
-    });
-  }
-
-  login() {
-    this.keycloak.login();
-  }
 }
