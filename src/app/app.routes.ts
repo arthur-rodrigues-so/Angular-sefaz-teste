@@ -13,49 +13,16 @@ import { createAuthGuard } from 'keycloak-angular';
 
 
 export const routes: Routes = [
-{
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: '',
-    component: HomeComponent, 
-    canActivate: [createAuthGuard],
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-  },
-  {
-    path: 'backends',
-    component: BackendsComponent,
-  },
-  {
-    path: 'apis',
-    component: ApisComponent,
-  },
-  {
-    path: 'gateways',
-    component: GatewaysComponent,
-  },
-  {
-    path: 'testes',
-    component: TestesComponent,
-  },
-  {
-    path: 'tags',
-    component: TagsComponent,
-  },
-  {
-    path: 'documentação',
-    component: DocumentacaoComponent,
-  },
-  {
-    path: 'usuario',
-    component: UsuarioComponent,
-  },
-  {
-    path: 'configurações',
-    component: ConfiguracoesComponent,
-  },
+  
+  {path: 'home',          component: HomeComponent, canActivate: [createAuthGuard] },
+  {path: 'tags',          component: TagsComponent            },
+  {path: 'apis',          component: ApisComponent            },
+  {path: 'testes',        component: TestesComponent          },
+  {path: 'usuario',       component: UsuarioComponent         },
+  {path: 'backends',      component: BackendsComponent        },
+  {path: 'gateways',      component: GatewaysComponent        },
+  {path: 'dashboard',     component: DashboardComponent       },
+  {path: 'documentação',  component: DocumentacaoComponent    },
+  {path: 'configurações', component: ConfiguracoesComponent   },
+
 ]

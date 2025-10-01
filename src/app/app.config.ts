@@ -4,7 +4,7 @@ import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideKeycloakAngular } from '../../keycloak/keycloak.config';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { includeBearerTokenInterceptor, KeycloakService } from 'keycloak-angular';
+import { includeBearerTokenInterceptor } from 'keycloak-angular';
 import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
@@ -22,6 +22,5 @@ export const appConfig: ApplicationConfig = {
     provideKeycloakAngular(), 
     provideHttpClient(withInterceptors([includeBearerTokenInterceptor])),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    KeycloakService,  
   ],
 };

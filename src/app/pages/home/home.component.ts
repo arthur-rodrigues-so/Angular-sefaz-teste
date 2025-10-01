@@ -1,8 +1,9 @@
 import { Component, effect, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
-import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs, KeycloakService } from 'keycloak-angular'
+import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs } from 'keycloak-angular'
 import { Router } from '@angular/router';
+import Keycloak from 'keycloak-js';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +15,14 @@ export class HomeComponent {
   authenticated = false;
   keycloakStatus: string | undefined;
 
-  private readonly keycloak = inject(KeycloakService);
+  private readonly keycloak = inject(Keycloak);
   private readonly keycloakSignal = inject(KEYCLOAK_EVENT_SIGNAL);
+
+  name?:string;
+  email?:string; 
 
   constructor(private router: Router) {
     effect(() => {
-      this.keycloak.getUsername()
       const keycloakEvent = this.keycloakSignal();
 
       this.keycloakStatus = keycloakEvent.type;
@@ -31,16 +34,15 @@ export class HomeComponent {
       if (keycloakEvent.type === KeycloakEventType.AuthLogout) {
         this.authenticated = false;
       }
+      
     });
   }
 
   login() {
     this.keycloak.login();
-    console.log(this.keycloak.getUsername())
   }
   
   logout() {
     this.keycloak.logout();
-
   }
 }
