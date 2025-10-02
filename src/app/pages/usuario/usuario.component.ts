@@ -12,21 +12,18 @@ export class UsuarioComponent {
   private readonly keycloak = inject(Keycloak);
   user: any;
 
-  name?: string;
-  email?: string;
-
   constructor() {
     const token = this.keycloak.token
 
     if (token) {
         const payload = JSON.parse(atob(token.split('.')[1]));
+        const UserID = payload.preferred_username;
         this.user = {
-          name: this.name = payload.name,
-          email: this.email = payload.email,
-          picture: payload.picture
+          name: payload.name,
+          email: payload.email,
+          picture: `${UserID}.jpeg`
         }
-       console.log(payload.picture) 
-       console.table('Payload do token', payload); 
+        console.table(payload)
       }
       
   }

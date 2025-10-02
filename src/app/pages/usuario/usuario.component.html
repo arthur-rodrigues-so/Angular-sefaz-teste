@@ -1,6 +1,5 @@
 <div class="user">
-    <img *ngIf="user.picture" src="user.picture" alt="foto do usuario" width="80" height="80" style="border-radius: 50%;">
+    <img *ngIf="user.picture" [src]="user.picture" alt="Foto do usuario">
     <h2> {{ user.name }} </h2>
     <h2> {{ user.email }} </h2>
 </div>
-

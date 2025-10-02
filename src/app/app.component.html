@@ -67,7 +67,7 @@
       <span matListItemTitle>Configurações</span>
     </a>
 
-    <a mat-list-item routerLink="/logout" (click)="closeIfMobile(sidenav)">
+    <a mat-list-item routerLink="/logout" (click)="closeIfMobile(sidenav)" (click)="logout()">
       <mat-icon matListItemIcon>logout</mat-icon>
       <span matListItemTitle>Sair</span>
     </a>
@@ -86,14 +86,13 @@
       <span class="spacer"></span>
 
       <!-- Notificações -->
-      <button mat-icon-button matTooltip="Notificações"
-              aria-label="Notificações">
+      <button mat-icon-button matTooltip="Notificações" aria-label="Notificações">
         <mat-icon [matBadge]="3">notifications</mat-icon>
       </button>
 
       <!-- Usuário -->
       <button mat-icon-button [matMenuTriggerFor]="userMenu" matTooltip="Conta" aria-label="Conta do usuário">
-        <mat-icon>account_circle</mat-icon>
+        <img class="perfil_pequeno v-middle" *ngIf="user.picture" [src]="user.picture" alt="Foto do usuario">
       </button>
     </mat-toolbar>
 
@@ -103,15 +102,14 @@
 
 <!-- Menu do usuário -->
 <mat-menu #userMenu="matMenu">
+  <h2 class="texto_perfil"> {{ user.email }} </h2>
   <button mat-menu-item routerLink="/usuario">
-    <mat-icon>person</mat-icon>
-    <span>Perfil</span>
+    <div class="user">
+      <img *ngIf="user.picture" [src]="user.picture" alt="Foto do usuario">
+    </div>
   </button>
-  <button mat-menu-item routerLink="/configurações">
-    <mat-icon>settings</mat-icon>
-    <span>Configurações</span>
-  </button>
-  <button mat-menu-item routerLink="/logout">
+  <h2 class="texto_perfil"> Olá,  {{ user.firstName }} </h2> 
+  <button mat-menu-item routerLink="/logout" (click)="logout()">
     <mat-icon>logout</mat-icon>
     <span>Sair</span>
   </button>

@@ -1,3 +1,26 @@
-h1 {
-    font-size: 20px;
+.user {
+  width: 320px;
+  margin: 40px auto;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  background-color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.user img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid #4F8EF7;
+}
+
+.user h2 {
+  margin: 8px 0;
+  font-size: 1.2em;
+  color: #333;
+  font-weight: normal;
 }

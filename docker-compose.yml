@@ -30,6 +30,8 @@ services:
       KC_PROXY: edge
       KC_HOSTNAME_STRICT: false
       KC_HTTP_ENABLED: true
+    volumes:
+      - ./keycloak/hall-da-justica:/opt/keycloak/themes/hall-da-justica
     depends_on:
       postgres:
         condition: service_healthy

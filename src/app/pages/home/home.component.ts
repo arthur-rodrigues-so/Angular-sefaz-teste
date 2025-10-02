@@ -37,12 +37,4 @@ export class HomeComponent {
       
     });
   }
-
-  login() {
-    this.keycloak.login();
-  }
-  
-  logout() {
-    this.keycloak.logout();
-  }
 }
